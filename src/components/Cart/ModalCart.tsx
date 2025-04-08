@@ -14,9 +14,9 @@ export const ModalCart = () => {
     update(id, value);
   };
 
-  const handleClose = () => {
+  const handleClose = (redirect: boolean = false) => {
     setState(false);
-    navigate("/checkout");
+    if (redirect) navigate("/checkout");
   };
 
   return (
@@ -25,7 +25,7 @@ export const ModalCart = () => {
         className="relative w-screen md:max-w-md  border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
       >
         <button
-          onClick={handleClose}
+          onClick={() => handleClose()}
           className="absolute end-4 top-4 text-gray-600 transition hover:scale-110"
         >
           <span className="sr-only">Close cart</span>
@@ -48,7 +48,7 @@ export const ModalCart = () => {
 
         <div className="mt-4 space-y-6">
           <ul className="space-y-4">
-            {products.map((product) => (
+            {products && products.map((product) => (
               <li key={product.id} className="flex items-center justify-between border-b pb-1 border-gray-200 ">
                 <img
                   src={product.image}
@@ -87,10 +87,19 @@ export const ModalCart = () => {
                 </div>
               </li>
             ))}
+            {products && products.length === 0 && ( 
+              <li className="flex items-center justify-center">
+                <div className="text-center">
+                  <h3 className="text-gray-900 text-lg">Tu carrito está vacío</h3>
+                  <p className="text-gray-600">Agrega algunos productos a tu carrito para poder realizar la compra</p>
+                </div>
+                
+              </li>
+            )}
           </ul>
 
           <div className="space-y-4 flex justify-end">
-            <Button color="secondary" onClick={handleClose}>
+            <Button color="secondary" onClick={() => handleClose(true)}>
               Confirmar compra
             </Button>
           </div>
