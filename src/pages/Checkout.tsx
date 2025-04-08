@@ -3,7 +3,13 @@ import { Button } from "../components/UI/Button";
 import { useCart } from "../store/cart";
 
 function Checkout() {
-  const { products, totalPrice } = useCart();
+  const { products, totalPrice,clear } = useCart();
+
+  const handleCheckout = () => {
+    alert('Compra finalizada');
+    clear();
+
+  }
 
   return (
     <section>
@@ -31,8 +37,9 @@ function Checkout() {
                   </div>
                 </dl>
 
-                <div className="flex justify-end">
-                  <Button color="secondary">Finalizar compra</Button>
+                <div className="flex justify-end gap-2">
+                  <Button to="/" color="secondary">Seguir comprando</Button>
+                  <Button color="primary" onClick={() => handleCheckout()}>Finalizar compra</Button>
                 </div>
               </div>
             </div>
