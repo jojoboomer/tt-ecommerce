@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 interface State {
   products: ProductOnCart[];
@@ -23,7 +23,7 @@ const initState: State = {
 
 export const useCart = create<State & Actions>()(
   persist(
-    (set) => ({
+    set => ({
       ...initState,
       add: (item) => {
         set((state) => {
@@ -97,7 +97,7 @@ export const useCart = create<State & Actions>()(
     }),
     {
       name: "commerce-storage",
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage)
     }
   )
 );
