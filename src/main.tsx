@@ -41,6 +41,6 @@ createRoot(document.getElementById('root')!).render(
     </button>
   )}>
     <RouterProvider router={router} />
-  </SnackbarProvider>,
-  </ModalProvider>,
+  </SnackbarProvider>
+  </ModalProvider>
 )
