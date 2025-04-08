@@ -1,21 +1,34 @@
-import { Suspense } from "react";
-import Banner from "../components/Home/Banner"
-import ProductList from "../components/Home/ProductList"
-
-
+import { useEffect } from "react";
+import Banner from "../components/Home/Banner";
+import ProductList from "../components/Home/ProductList";
+import ScrollUpButton from "../components/UI/ScrollUpButton ";
+import { useProductStore } from "../store/products";
 
 function Home() {
+  const { allProducts, filters, fetchProducts } = useProductStore();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = allProducts.filter((p) => {
+    const matchesCategory =
+      filters.category === "all" || p.category === filters.category;
+    const matchesText = p.title
+      .toLowerCase()
+      .includes(filters.searchText.toLowerCase());
+    return matchesCategory && matchesText;
+  });
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Banner />
-      <section className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold mb-6">Nuestros Productos</h2>
-          <ProductList/>
+    <>
+      <section className="">
+        <Banner />
+        <ProductList products={filteredProducts} />
       </section>
-    </div>
-  )
+      <ScrollUpButton />
+    </>
+  );
 }
 
-export default Home
-
+export default Home;

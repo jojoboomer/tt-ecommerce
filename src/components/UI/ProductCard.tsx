@@ -1,34 +1,57 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { closeSnackbar, SnackbarKey, useSnackbar } from "notistack";
+import { Link } from "react-router";
+import { useCart } from "../../store/cart";
+import { AddCart } from "../Icons/AddCart";
+import { Button } from "./Button";
 
-function ProductCard({ product }) {
-  const [added, setAdded] = useState(false)
+const action = (snackbarId : SnackbarKey) => (
+  <>
+    <button onClick={() => { closeSnackbar(snackbarId) }}>
+      X
+    </button>
+  </>
+);
 
-  const handleAddToCart = () => {
-    setAdded(true)
-    setTimeout(() => setAdded(false), 1500)
-    // Here you would typically dispatch an action to add the product to the cart
-  }
+function ProductCard({ product } : { product: Product }) {
+  const { add } = useCart();
+  const { enqueueSnackbar } = useSnackbar();
+
+
+  const handleAddToCart = (product: Product) => {
+    add(product);
+    enqueueSnackbar('Producto agregado al carrito',  {action});
+  };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold">{product.name}</h3>
-        <p className="text-gray-600 mt-1">${product.price.toFixed(2)}</p>
-        <button
-          onClick={handleAddToCart}
-          className={`mt-3 w-full py-2 px-4 rounded-md font-medium transition-colors ${
-            added ? "bg-green-500 text-white" : "bg-purple-600 text-white hover:bg-purple-700"
-          }`}
+    <div className=" relative block overflow-hidden rounded bg-white shadow py-1">
+      <div className="overflow-hidden">
+        <Link to={`/p/${product.id}`}>
+          <img
+            src={product.image}
+            alt={product.title}
+            className="h-64 w-full object-cover transition duration-350 hover:scale-105 sm:h-72"
+          />
+        </Link>
+      </div>
+
+      <div className="relative px-4 flex flex-col gap-2">
+        <p className="text-base ">${product.price}</p>
+
+        <h3 className="text-md font-medium truncate">{product.title}</h3>
+
+        <Button
+          color="primary"
+          size="medium"
+          onClick={() => handleAddToCart(product)}
         >
-          {added ? "Añadido ✓" : "Añadir al carrito"}
-        </button>
+          <AddCart className="h-5 w-5 stroke-white group-hover:stroke-primary" />
+          Agregar al carrito
+        </Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductCard
-
+export default ProductCard;
