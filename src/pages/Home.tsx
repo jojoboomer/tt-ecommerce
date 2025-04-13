@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Banner from "../components/Home/Banner";
+import { CategorySwiper } from "../components/Home/CategorySwiper";
 import ProductList from "../components/Home/ProductList";
-import ScrollUpButton from "../components/UI/ScrollUpButton ";
 import { useProductStore } from "../store/products";
 
 function Home() {
@@ -22,11 +22,11 @@ function Home() {
 
   return (
     <>
-      <section className="">
+      <section className="space-y-8">
         <Banner />
+        <CategorySwiper/>
         <ProductList products={filteredProducts} />
       </section>
-      <ScrollUpButton />
     </>
   );
 }

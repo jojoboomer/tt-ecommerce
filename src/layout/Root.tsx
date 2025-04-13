@@ -1,6 +1,8 @@
 import { Outlet } from "react-router";
+import { Toaster } from "sonner";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/UI/Header";
+import ScrollUpButton from "../components/UI/ScrollUpButton ";
 
 function Root() {
 
@@ -13,6 +15,8 @@ function Root() {
         </div>
         <Footer/>
       </main>
+      <ScrollUpButton />
+      <Toaster position="bottom-left" expand={true} richColors  closeButton />
     </>
   );
 }

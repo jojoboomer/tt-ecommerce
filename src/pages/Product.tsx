@@ -1,4 +1,3 @@
-import { closeSnackbar, SnackbarKey, useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { AddCart } from "../components/Icons/AddCart";
@@ -7,21 +6,12 @@ import { Star } from "../components/Icons/Star";
 import { Button } from "../components/UI/Button";
 import { useCart } from "../store/cart";
 
-const action = (snackbarId: SnackbarKey) => (
-  <button
-    onClick={() => {
-      closeSnackbar(snackbarId);
-    }}
-  >
-    X
-  </button>
-);
+
 
 function Product() {
   const params = useParams();
   const [product, setProduct] = useState<Product>();
   const { add } = useCart();
-  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -33,7 +23,7 @@ function Product() {
 
   const handleAddToCart = (product: Product) => {
     add(product);
-    enqueueSnackbar("Producto agregado al carrito", { action });
+    // enqueueSnackbar("Producto agregado al carrito", { action });
   };
 
   return (

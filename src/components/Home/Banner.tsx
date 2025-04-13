@@ -1,24 +1,28 @@
+import "swiper/swiper-bundle.css";
+
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+const BANNER_IMAGES = ["/banner-1.jpg", "/banner.jpg"];
+
 function Banner() {
   return (
-    <section
-      className="h-80 my-24 flex items-center justify-center text-center bg-center bg-cover bg-amber-600 bg-no-repeat"
-      style={{
-        backgroundImage: "url(/banner.jpg)",
-      }}
-    >
-      <div className="">
-        <h1 className="text-4xl font-bold">Bienvenido a nuestra tienda</h1>
-        <p className="text-xl mb-6">
-          Descubre nuestros productos de alta calidad
-        </p>
-        <a
-          href="#products"
-          className="bg-white text-primary px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors"
-        >
-          Ver todas las ofertas
-        </a>
-      </div>
-    </section>
+    <div className="my-8 overflow-hidden rounded-lg ">
+      <Swiper
+        pagination={true}
+        modules={[Pagination,Autoplay ]}
+        autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+        }}        className="w-full h-full"
+      >
+        {BANNER_IMAGES.map((image, index) => (
+          <SwiperSlide className="relative min-h-80 bg-amber-200" key={index}>
+            <img className="object-cover" src={image} alt={`Banner-${index}`} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }
 

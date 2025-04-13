@@ -1,18 +1,17 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const ScrollUpButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Mostrar o esconder el botón dependiendo del desplazamiento
   const handleScroll = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 200) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
     }
   };
 
-  // Desplazar hacia arriba al hacer clic en el botón
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -20,7 +19,6 @@ const ScrollUpButton = () => {
     });
   };
 
-  // Establecer el evento de desplazamiento
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -30,8 +28,15 @@ const ScrollUpButton = () => {
 
   return (
     isVisible && (
-      <button
+      <AnimatePresence>
+      <motion.button
         onClick={scrollToTop}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        whileHover={{ scale: 1.1}}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className="fixed bottom-4 right-4 bg-primary p-2 rounded-full shadow-lg cursor-pointer hover:opacity-90"
       >
         <svg
@@ -48,7 +53,8 @@ const ScrollUpButton = () => {
             <path d="M17.504 26.025l.001-14.287 6.366 6.367L26 15.979 15.997 5.975 6 15.971 8.129 18.1l6.366-6.368v14.291z"></path>
           </g>
         </svg>
-      </button>
+      </motion.button>
+      </AnimatePresence>
     )
   );
 };

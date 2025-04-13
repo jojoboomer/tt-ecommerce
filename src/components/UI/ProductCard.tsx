@@ -1,27 +1,17 @@
 "use client";
 
-import { closeSnackbar, SnackbarKey, useSnackbar } from "notistack";
 import { Link } from "react-router";
+import { toast } from "sonner";
 import { useCart } from "../../store/cart";
 import { AddCart } from "../Icons/AddCart";
 import { Button } from "./Button";
 
-const action = (snackbarId : SnackbarKey) => (
-  <>
-    <button onClick={() => { closeSnackbar(snackbarId) }}>
-      X
-    </button>
-  </>
-);
-
 function ProductCard({ product } : { product: Product }) {
   const { add } = useCart();
-  const { enqueueSnackbar } = useSnackbar();
-
 
   const handleAddToCart = (product: Product) => {
     add(product);
-    enqueueSnackbar('Producto agregado al carrito',  {action});
+    toast.info('Producto agregado al carrito',)
   };
 
   return (
