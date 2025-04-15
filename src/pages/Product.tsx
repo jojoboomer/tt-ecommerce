@@ -6,7 +6,7 @@ import { Star } from "../components/Icons/Star";
 import { Button } from "../components/UI/Button";
 import { useCart } from "../store/cart";
 
-
+import { toast } from "sonner";
 
 function Product() {
   const params = useParams();
@@ -23,7 +23,7 @@ function Product() {
 
   const handleAddToCart = (product: Product) => {
     add(product);
-    // enqueueSnackbar("Producto agregado al carrito", { action });
+    toast.info('Producto agregado al carrito',)
   };
 
   return (

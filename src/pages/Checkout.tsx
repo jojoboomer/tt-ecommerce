@@ -8,7 +8,6 @@ function Checkout() {
   const handleCheckout = () => {
     alert('Compra finalizada');
     clear();
-
   }
 
   return (

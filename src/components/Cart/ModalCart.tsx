@@ -28,8 +28,6 @@ export const ModalCart = () => {
           onClick={() => handleClose()}
           className="absolute end-4 top-4 text-gray-600 transition hover:scale-110"
         >
-          <span className="sr-only">Close cart</span>
-
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

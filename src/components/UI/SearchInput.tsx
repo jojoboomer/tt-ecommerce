@@ -30,7 +30,7 @@ const SearchInput = () => {
 
       <input
         className="h-full w-full bg-transparent py-2 text-sm placeholder:text-[#8b8ba7] focus:outline-none"
-        placeholder="Type your text"
+        placeholder="Buscar en la tienda"
         type="text"
         value={filters.searchText}
         onChange={(e) => setFilters({ searchText: e.target.value })}

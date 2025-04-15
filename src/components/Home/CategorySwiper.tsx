@@ -5,6 +5,14 @@ import { useProductStore } from "../../store/products";
 
 export const CategorySwiper = () => {
   const { allCategories, setFilters, filters } = useProductStore();
+
+  const handleClick = (title: string) => {
+    if( filters.category === title) {
+      setFilters({ category: "all" });
+      return;
+    };
+    setFilters({ category: title });
+  };
   return (
     <>
       <h2 className="text-2xl font-bold mb-6">Buscar por categorías</h2>
@@ -26,7 +34,7 @@ export const CategorySwiper = () => {
       >
         {allCategories.map(({ title, image }, index) => (
           <SwiperSlide
-            onClick={() => setFilters({ category: title })}
+            onClick={() => handleClick(title)}
             className={` ${filters.category == title && `after:bg-black/50`}
           relative max-h-32 bg-black overflow-hidden aspect-square rounded-lg hover:cursor-pointer
           after:w-full after:h-full after:absolute after:inset-0 after:transition-colors after:duration-200

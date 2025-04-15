@@ -31,7 +31,7 @@ export const Button = ({
     large: "px-12 py-4 text-base",
   };
 
-  const buttonClasses = `${"group flex rounded border font-medium gap-2 cursor-pointer items-center justify-center"} ${
+  const buttonClasses = `${"group transition-colors duration-200 flex rounded border font-medium gap-2 cursor-pointer items-center justify-center"} ${
     colorClasses[color]
   } ${sizeClasses[size]} `;
 

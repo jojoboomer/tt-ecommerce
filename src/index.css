@@ -3,12 +3,21 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-background);
+  font-family: OpenSans, sans-serif;
 }
 
 body,
 html {
   padding: 0;
   margin: 0;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-weight: 500, 600, 800, 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/OpenSans.ttf");
 }
 
 @theme {
