@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { toast } from "sonner";
 import { useCart } from "../../store/cart";
 import { AddCart } from "../Icons/AddCart";
-import { Button } from "./Button";
+import { Button } from "../UI/Button";
 
 function ProductCard({ product } : { product: Product }) {
   const { add } = useCart();

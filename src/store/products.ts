@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { products } from "../data/products.json";
 
 type Filters = {
   category: string;
@@ -8,7 +9,7 @@ type Filters = {
 
 interface State {
   allProducts: Product[];
-  allCategories: string[];
+  allCategories: Category[];
   filters: Filters;
 }
 
@@ -28,17 +29,18 @@ const initState: State = {
 
 export const useProductStore = create<State & Actions>()(
   persist(
-    set => ({
+    (set) => ({
       ...initState,
 
       fetchProducts: async () => {
         try {
-          const res = await fetch("https://fakestoreapi.com/products");
+          // const res = await fetch("https://fakestoreapi.com/products");
+          // const allProducts: Product[] = await res.json();
 
-          const allProducts: Product[] = await res.json();
-          const allCategories = Array.from(
-            new Set(allProducts.map((p) => p.category))
-          );
+          const allProducts = products;
+
+          const allCategories = [...new Set(products.map(product => JSON.stringify(product.category)))].map(category => JSON.parse(category));
+
           set({ allProducts, allCategories });
         } catch (error) {
           console.error("Error fetching products:", error);

@@ -13,7 +13,7 @@ function Home() {
 
   const filteredProducts = allProducts.filter((p) => {
     const matchesCategory =
-      filters.category === "all" || p.category === filters.category;
+      filters.category === "all" || p.category.title === filters.category;
     const matchesText = p.title
       .toLowerCase()
       .includes(filters.searchText.toLowerCase());

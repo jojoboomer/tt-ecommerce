@@ -10,11 +10,12 @@ function Banner() {
     <div className="my-8 overflow-hidden rounded-lg ">
       <Swiper
         pagination={true}
-        modules={[Pagination,Autoplay ]}
+        modules={[Pagination, Autoplay]}
         autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-        }}        className="w-full h-full"
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        className="w-full h-full"
       >
         {BANNER_IMAGES.map((image, index) => (
           <SwiperSlide className="relative min-h-80 bg-amber-200" key={index}>

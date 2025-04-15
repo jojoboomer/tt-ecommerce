@@ -1,5 +1,5 @@
 interface Product {
-    category: string;
+    category: Category;
     description: string;
     id: number;
     image: string;
@@ -12,8 +12,8 @@ interface Product {
 }
 
 interface Category {
-    id: string;
-    name: string;
+    title: string;
+    image: string;
 }
 
 interface ProductOnCart extends Product {
