@@ -18,8 +18,8 @@ function Banner() {
         className="w-full h-full"
       >
         {BANNER_IMAGES.map((image, index) => (
-          <SwiperSlide className="relative min-h-80 bg-amber-200" key={index}>
-            <img className="object-cover" src={image} alt={`Banner-${index}`} />
+          <SwiperSlide className="relative  bg-amber-200" key={index}>
+            <img className="object-cover object-center w-full h-full" src={image} alt={`Banner-${index}`} />
           </SwiperSlide>
         ))}
       </Swiper>

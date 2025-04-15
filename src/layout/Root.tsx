@@ -10,7 +10,7 @@ function Root() {
     <>  
       <main className="min-h-screen h-screen text-text flex flex-col">
       <Header/>
-        <div className="container mx-auto pt-20 flex-1">
+        <div className="container mx-auto pt-20 flex-1 px-4 md:px-0">
           <Outlet />
         </div>
         <Footer/>

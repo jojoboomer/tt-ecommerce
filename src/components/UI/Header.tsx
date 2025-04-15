@@ -19,7 +19,7 @@ export const Header = () => {
             <img src={"/logo.png"} alt="logo" className="size-16 font-extrabold" /> TECOPOS
           </Link>
         </div>
-        <div className="relative flex items-center justify-center flex-1 px-24 h-10 ">
+        <div className="hidden md:flex relative  items-center justify-center flex-1 px-24 h-10 ">
           <SearchInput />
         </div>
         <nav className="flex items-center space-x-4">
