@@ -16,7 +16,7 @@ export const Header = () => {
             to="/"
             className="text-xl font-bold text-gray-800 flex gap-2 items-center"
           >
-            <img src={"/logo.png"} alt="logo" className="size-16 font-extrabold" /> TECOPOS
+            <img src={"/logo.png"} alt="logo" className="size-16 font-extrabold" /> MY ECOMMERCE
           </Link>
         </div>
         <div className="hidden md:flex relative  items-center justify-center flex-1 px-24 h-10 ">

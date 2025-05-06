@@ -9,7 +9,7 @@ export const Footer = () => {
             to="/"
             className="text-xl font-bold text-white flex gap-2 items-center"
           >
-            <img src={"/logo.png"} alt="logo" className="size-16" /> TECOPOS
+            <img src={"/logo.png"} alt="logo" className="size-16" /> MY ECOMMERCE
           </Link>
           <p className="mt-4 text-center text-sm text-white lg:mt-0 lg:text-right">
             Copyright &copy; 2022. All rights reserved.

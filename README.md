@@ -1,6 +1,6 @@
 ## 🚀 Demo
 
-[tt-tocopos.netlify.app](https://tt-tecopos.netlify.app)
+[tt-ecommerce.netlify.app](https://tt-ecommerce.netlify.app/)
 
 ## ⚙️ Cómo instalar y correr el proyecto localmente
 
